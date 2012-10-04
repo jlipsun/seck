@@ -1,0 +1,45 @@
+seck
+====
+
+Search Engine Construction Kit
+
+version 0.0.1
+
+DIRECTORY ORGANIZATION
+
+seck-lib -- library routines that are shared by both the backend applications and the web application
+
+seck-app -- suite of backend applications that are responsible for crawling and indexing/archiving (cataloging) data 
+
+seck-web -- servlet-based web application providing users with a browser interface access to the search engine data
+
+ECLIPSE GUIDE
+
+To develop the project in eclipse (this is assuming that you've correctly pulled or forked the project from the master branch):
+
+1. cd /path/to/seck/sec-lib
+   mvn eclipse:eclipse
+   from eclipse:
+     File > Import > General > Existing Projects into Workspace > [select path to sec-lib] make sure that you do not check copy project into workspace as this will cause problems for synchronizing with GIT
+
+2. Repeat step #1 for sec-app and sec-web
+
+3. From eclipse configure build path for sec-app and sec-web
+   Java Build Path > Projects > Add > seck-lib
+
+The idea here is that both app and web depend on lib.
+
+TOMCAT
+
+Tomcat is configured to run in place within seck-web, to use it:
+
+cd /path/to/seck-web
+mvn tomcat:run
+
+Point your web browser to http://localhost:8080/seck-web/hello
+
+
+CONTACT
+
+For more information on the seck project: johnjtran@acm.org
+
