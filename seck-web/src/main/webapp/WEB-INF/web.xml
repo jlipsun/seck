@@ -4,12 +4,29 @@
 
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
+    
     <servlet>
         <servlet-name>HelloWorld</servlet-name>
         <servlet-class>com.pcwerk.seck.servlet.HelloWorld</servlet-class>
     </servlet>
+    
+    <servlet>
+		<servlet-name>Restlet</servlet-name>
+		<servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
+		<init-param>
+			<param-name>org.restlet.application</param-name>
+			<param-value>com.pcwerk.seck.rest.restlet.SeckWebRestletApp</param-value>
+		</init-param>
+	</servlet>
+    
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+	
+	<!-- URL mapping for catching requests using the RESTlet interface-->
+	<servlet-mapping>
+		<servlet-name>Restlet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
 </web-app>

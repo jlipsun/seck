@@ -38,17 +38,17 @@ To develop the project in eclipse (this is assuming that you've correctly pulled
 
 1. Using maven to setup your eclipse settings in your top level directory:
 
-    cd /path/to/seck/
-    mvn install
-    mvn eclipse:eclipse
-
-
+         cd /path/to/seck/
+         mvn install
+         mvn eclipse:eclipse
 
 2. Importing modules (projects) into eclipse.  Make sure that you do not check copy project into workspace as this will cause problems for synchronizing with GIT.
 
-   File > Import > General > Existing Projects into Workspace > [select path to sec-lib] 
+         File > Import > General > Existing Projects into Workspace > [select path to sec-lib] 
 
 3. Repeat step #2 for sec-app and sec-web -- note that you ONLY need to import into eclipse and that you only need to run 'mvn eclipse:eclipse' (step #1) once at the top level directory.
+
+NOTE: the above steps are required for each new version introduced.  Under the hood, _mvn install_ puts your libraries into the M2 repo; however, eclipse at runtime will reference your latest development.
 
 ## Sample App
 
@@ -61,7 +61,6 @@ To run
 
     cd /path/to/seck/seck-app/target/
     java -jar seck-app-0.0.2.jar /search/path "keyword"
-
 
 ## Tomcat
 
