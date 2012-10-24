@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.pcwerk</groupId>
   <artifactId>seck</artifactId>
-  <version>0.0.3-rc</version>
+  <version>0.0.5-dev</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -151,6 +151,38 @@
         <version>1.1.1</version>
       </dependency>
       <dependency>
+        <groupId>commons-httpclient</groupId>
+        <artifactId>commons-httpclient</artifactId>
+        <version>3.0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.12</version>
+      </dependency>
+      <dependency>
+      <groupId>org.restlet.jee</groupId>
+        <artifactId>org.restlet</artifactId>
+        <version>2.0.15</version>
+      </dependency>
+      <dependency>
+        <groupId>org.restlet.jee</groupId>
+        <artifactId>org.restlet.ext.servlet</artifactId>
+        <version>2.0.15</version>
+      </dependency>
+      <dependency>
+        <groupId>org.restlet.jee</groupId>
+        <artifactId>org.restlet.ext.freemarker</artifactId>
+        <version>2.0.15</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+	<groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+	<version>1.2</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-bundle-jaxrs</artifactId>
         <version>2.5.1</version>
@@ -209,24 +241,6 @@
         <version>4.10</version>
         <scope>test</scope>
       </dependency>
-      <dependency>
-        <groupId>org.restlet.jee</groupId>
-        <artifactId>org.restlet</artifactId>
-        <version>2.0.15</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.restlet.jee</groupId>
-        <artifactId>org.restlet.ext.servlet</artifactId>
-        <version>2.0.15</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.restlet.jee</groupId>
-        <artifactId>org.restlet.ext.freemarker</artifactId>
-        <version>2.0.15</version>
-        <scope>provided</scope>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -266,6 +280,7 @@
   <modules>
     <module>seck-lib</module>
     <module>seck-app</module>
+    <module>seck-cluster</module>
     <module>seck-web</module>
   </modules>
 </project>
