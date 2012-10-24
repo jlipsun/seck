@@ -8,24 +8,22 @@
     <version>0.0.5-dev</version>
   </parent>
 
-  <artifactId>seck-app</artifactId>
+  <artifactId>seck-cluster</artifactId>
   <packaging>jar</packaging>
 
   <build>
     <plugins>
-
     <plugin>
       <artifactId>maven-assembly-plugin</artifactId>
       <configuration>
         <descriptors>
-          <descriptor>src/assembly/exe.xml</descriptor>
+          <descriptor>src/assembly/dist.xml</descriptor>
         </descriptors>
         <archive>
           <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
         </archive>
       </configuration>
     </plugin>
-
     </plugins>
   </build>
 
