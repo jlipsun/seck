@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Hello World Guestbook</title>
+
+		<script type="text/javascript">
+			function doSubmit(entryName, formName) {
+				var theForm = document.getElementById(formName);
+				if (formName == "") {
+					formName = document.getElementById()
+				}
+				theForm.action = "/rest/helloworld/" + entryName;
+				theForm.submit();
+			}
+
+			function toggleEdit(messageId, buttonId) {
+				var txtMessage = document.getElementById(messageId);
+				var btnEdit = document.getElementById(buttonId);
+				if (txtMessage.readOnly) {
+					txtMessage.readOnly = false;
+					txtMessage.style.backgroundColor = "#FFF";
+					btnEdit.disabled = false;
+				} else if (!txtMessage.readOnly) {
+					txtMessage.readOnly = true;
+					txtMessage.style.backgroundColor = "#EEE";
+					btnEdit.disabled = true;
+				}
+			}
+
+			function editMessage(entryName, formName) {
+
+				var theForm = document.getElementById(formName);
+				theForm.method.value = "edit";
+				doSubmit(entryName, formName);
+			}
+
+		</script>
+
+	</head>
+	<body>
+		<div style="padding-left:155px;">
+			<h1>Hello World Guestbook</h1>
+			<form id="addEntry" method="post" action="" onsubmit="javascript:doSubmit("", "addEntry");">
+				<input type="hidden" name="method" value="add" />
+				<table>
+					<tr>
+						<th style="text-align:left;">Name</th><td>
+						<input type="text" id="addName" name="addName" size="65" />
+						</td>
+					</tr>
+					<tr>
+						<th style="text-align:left;">Message</th><td>						<textarea id="message" name="message" rows="5" cols="50"></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align:right;">
+						<input type="submit" value="Submit"/>
+						</td>
+					</tr>
+				</table>
+
+			</form>
+		</div>
+		<div style="font: 13px/27px Arial,sans-serif;padding-left:155px;width:495px;">
+
+			<!-- Freemarker's iteration of lists in data object from Restlet,
+			similar to JSTL <c:foreach> tag -->
+			<#list guestBookEntries as entry>
+			<div style="margin:0px 0px 0px 0px;font-weight:bold;color:green;">
+				<#-- ${data} placemarkers are holders for data coming from the restlet, similar to Expression Language in JSP -->
+				<#-- Placemarkers can be formattted by adding a ?format after the data. Format: ${data?format} -->
+				${entry.name} (${entry.timestamp?datetime})
+			</div>
+			<div style="margin:-10px 0px 10px 0px;padding-left:10px;">
+				<form id=${entry.id?c} method="post">
+					<input type="hidden" name="id" value="${entry.id?c}" />
+					<input type="hidden" name="guestName" value="${entry.name}" />
+					<input type="hidden" name="method" value="delete" />
+					<a href="javascript:toggleEdit('message${entry.id?c}','edit${entry.id?c}');">Edit</a>
+					<a href="javascript:doSubmit('${entry.name}', ${entry.id?c});">Delete</a>
+					<textarea id="message${entry.id?c}" name="message" readonly style="background-color:#EEE;font-style:oblique;border:1px solid black;height:100px;width:100%">${entry.message}</textarea>
+					<button id="edit${entry.id?c}" disabled onclick="editMessage('${entry.name}', ${entry.id?c})">
+						Edit
+					</button>
+				</form>
+			</div>
+			</#list>
+		</div>
+	</body>
+</html>
