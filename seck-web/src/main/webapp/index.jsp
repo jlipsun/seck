@@ -10,5 +10,9 @@ What is your name?
 <input type="submit" value="Submit">
 </form>
 
+<div>
+<a href="/rest/helloworld">Restlet Guestbook Demo</a>
+</div>
+
 </body>
 </html>

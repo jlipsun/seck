@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.pcwerk</groupId>
     <artifactId>seck</artifactId>
-    <version>0.0.3-rc</version>
+    <version>0.0.5-dev</version>
   </parent>
 
   <artifactId>seck-lib</artifactId>
@@ -13,10 +13,25 @@
 
   <dependencies>
     <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>org.apache.tika</groupId>
+        <artifactId>tika-core</artifactId>
+        <version>1.2</version>
+ 	</dependency>
+ 	<dependency>
+       <groupId>org.apache.tika</groupId>
+       <artifactId>tika-parsers</artifactId>
+       <version>1.2</version>
+ 	</dependency>
   </dependencies>
 
 </project>
