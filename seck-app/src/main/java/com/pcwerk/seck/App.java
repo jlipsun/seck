@@ -54,7 +54,11 @@ public class App {
         }
         crawl();
       } else if (command.equals("crawl-info")) {
-        crawlInfo();
+          if (! params.containsKey("file")) {
+              usage();
+              System.exit(0);
+          }
+    	  crawlInfo();
       } else {
         System.out.println("[e]   '" + command + "' => unknown command");
       }
@@ -67,7 +71,7 @@ public class App {
     // put in your crawling code here -- all parameters are in params
     
     Crawler crawler = new Crawler();
-    crawler.HelloCrawler();
+    
     System.out.println("[i]   crawling ends");
   }
 
@@ -75,8 +79,8 @@ public class App {
     System.out.println("[i]   display information on the crawled data");
     
     // put your crawling information code here -- all parameters are in params
-    CrawlInfo crawlInfo = new CrawlInfo();
-    crawlInfo.HelloCrawlInfo();
+    CrawlInfo crawlInfo = new CrawlInfo(params.get("file"));
+    crawlInfo.printData();
     
   }
 

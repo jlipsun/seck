@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sites>
+	<site>
+		<url>http://www.sample.com</url>
+		<content>
+			SAMPLE CONTENT HERE
+		</content>
+		<links>
+			<link>/first.html</link>
+			<link>/second.htm</link>
+			<link>/folder/third.html</link>
+		</links>
+	</site>
+	<site>
+		<url>http://www.test.com</url>
+		<content>
+			TEST CONTENT HERE
+		</content>
+		<links>
+			<link>/apple.html</link>
+			<link>/boy.htm</link>
+			<link>/cat/dog.html</link>
+		</links>
+	</site>
+</sites>
