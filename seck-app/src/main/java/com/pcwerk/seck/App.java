@@ -1,5 +1,7 @@
 package com.pcwerk.seck;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,7 +16,9 @@ public class App {
   protected ArrayList<String> commandStack = new ArrayList<String>();
   protected HashMap<String,String> params = new HashMap<String,String>();
   
-  public static void main(String[] argv) { 
+  public App(){}
+  
+  public static void main(String[] argv) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException { 
     App app = new App();
     app.parseArgs(argv);
     app.showParams();
@@ -44,7 +48,7 @@ public class App {
     System.out.println("  --file=FILENAME specify a datafile to save (if not specified, use to stdout)");
   }
   
-  private void run() {
+  private void run() throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException {
     for (String command : commandStack) {
       System.out.println("[i] execute: " + command);
       if (command.equals("crawl")) {
@@ -52,7 +56,7 @@ public class App {
           usage();
           System.exit(0);
         }
-        crawl();
+        crawl(params);
       } else if (command.equals("crawl-info")) {
         crawlInfo();
       } else {
@@ -61,13 +65,14 @@ public class App {
     }
   }
   
-  private void crawl() {
+
+private void crawl(HashMap<String, String> params) throws NumberFormatException, FileNotFoundException, IOException, ClassNotFoundException {
     System.out.println("[i]   crawling starts");
     
     // put in your crawling code here -- all parameters are in params
     
-    Crawler crawler = new Crawler();
-    crawler.HelloCrawler();
+    Crawler crawler = new Crawler(params);
+    crawler.crawl();
     System.out.println("[i]   crawling ends");
   }
 
