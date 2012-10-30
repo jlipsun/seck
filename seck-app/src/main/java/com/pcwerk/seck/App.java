@@ -3,6 +3,9 @@ package com.pcwerk.seck;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.pcwerk.seck.file.CrawlInfo;
+import com.pcwerk.seck.file.Crawler;
+
 import gnu.getopt.Getopt;
 import gnu.getopt.LongOpt;
 
@@ -63,6 +66,8 @@ public class App {
     
     // put in your crawling code here -- all parameters are in params
     
+    Crawler crawler = new Crawler();
+    crawler.HelloCrawler();
     System.out.println("[i]   crawling ends");
   }
 
@@ -70,6 +75,9 @@ public class App {
     System.out.println("[i]   display information on the crawled data");
     
     // put your crawling information code here -- all parameters are in params
+    CrawlInfo crawlInfo = new CrawlInfo();
+    crawlInfo.HelloCrawlInfo();
+    
   }
 
   private void parseArgs(String[] argv) {
