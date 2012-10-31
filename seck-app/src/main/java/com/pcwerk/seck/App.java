@@ -58,7 +58,11 @@ public class App {
         }
         crawl(params);
       } else if (command.equals("crawl-info")) {
-        crawlInfo();
+          if (! params.containsKey("file")) {
+              usage();
+              System.exit(0);
+          }
+    	  crawlInfo();
       } else {
         System.out.println("[e]   '" + command + "' => unknown command");
       }
@@ -70,18 +74,20 @@ private void crawl(HashMap<String, String> params) throws NumberFormatException,
     System.out.println("[i]   crawling starts");
     
     // put in your crawling code here -- all parameters are in params
-    
+
     Crawler crawler = new Crawler(params);
     crawler.crawl();
+
     System.out.println("[i]   crawling ends");
-  }
+    
+}
 
   private void crawlInfo() {
     System.out.println("[i]   display information on the crawled data");
     
     // put your crawling information code here -- all parameters are in params
-    CrawlInfo crawlInfo = new CrawlInfo();
-    crawlInfo.HelloCrawlInfo();
+    CrawlInfo crawlInfo = new CrawlInfo(params.get("file"));
+    crawlInfo.printData();
     
   }
 
